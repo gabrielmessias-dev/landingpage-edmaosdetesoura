@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ed Mãos de Tesoura | Barbearia & Estilo</title>
+
+    <!-- ============================================================
+    GOOGLE FONTS
+  ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ============================================================
+    FONT AWESOME
+  ============================================================ -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- ============================================================
+    CSS
+  ============================================================ -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ============================================================
+    NAVEGAÇÃO
+  ============================================================ -->
+    <nav id="navbar">
+      <div class="nav-logo">
+        <i class="fas fa-scissors scissors-icon"></i>
+        <div>
+          <div class="logo-text">Ed Mãos de Tesoura</div>
+          <div class="logo-sub">Barbearia & Estilo</div>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+
+      <!-- WHATSAPP DO BARBEIRO -->
+      <a
+        href="https://api.whatsapp.com/send?phone=5571987501294&text=Olá%2C%20gostaria%20de%20agendar%20um%20horário!"
+        target="_blank"
+        rel="noopener"
+        class="btn-wpp"
+        style="display: none; display: inline-flex"
+        id="nav-wpp-btn"
+      >
+        <i class="fab fa-whatsapp"></i> Agendar
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#servicos" class="mobile-nav-link">Serviços</a>
+      <a href="#sobre" class="mobile-nav-link">Sobre</a>
+      <a href="#localizacao" class="mobile-nav-link">Localização</a>
+      <!-- WHATSAPP -->
+      <a
+        href="https://api.whatsapp.com/send?phone=55715571987501294&text=Olá%2C%20gostaria%20de%20agendar%20um%20horário!"
+        target="_blank"
+        rel="noopener"
+        class="btn-wpp"
+        style="margin-top: 1rem"
+      >
+        <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+      </a>
+    </div>
+
+    <!-- ============================================================
+    HERO
+  ============================================================ -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="hero-badge"
+            ><i class="fas fa-scissors"></i> Barbearia & Salão Masculino</span
+          >
+
+          <h1 class="hero-title">
+            Estilo, Tradição<br />
+            e Cuidado com<br />
+            <em>a sua Imagem.</em>
+          </h1>
+
+          <p class="hero-subtitle">
+            Nas mãos certas, cada corte é uma obra de arte. Edgar, o
+            <strong style="color: var(--text-beige)">Ed Mãos de Tesoura</strong
+            >, transforma cabelo e barba em expressão de identidade.
+          </p>
+
+          <div class="hero-cta-group">
+            <!-- WHATSAPP -->
+            <a
+              href="https://api.whatsapp.com/send?phone=5571987501294&text=Olá%2C%20gostaria%20de%20agendar%20um%20horário!"
+              target="_blank"
+              rel="noopener"
+              class="btn-wpp"
+            >
+              <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+            </a>
+            <a href="#servicos" class="btn-outline">Ver serviços →</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>20+</strong>
+              <span>Anos de experiência</span>
+            </div>
+            <div class="stat">
+              <strong>500+</strong>
+              <span>Clientes satisfeitos</span>
+            </div>
+            <div class="stat">
+              <strong>5★</strong>
+              <span>Avaliação média</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="scissors-art">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="main-icon">
+              <i class="fas fa-scissors"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    SERVIÇOS & PREÇOS
+    EDITE os nomes, descrições e valores nesta seção
+  ============================================================ -->
+    <section id="servicos">
+      <div class="container">
+        <span class="eyebrow">O que fazemos</span>
+        <div class="section-divider">
+          <span></span><i class="fas fa-scissors"></i><span></span>
+        </div>
+        <h2 class="section-title">Serviços & Preços</h2>
+        <p class="section-subtitle">
+          Qualidade em cada detalhe, do corte clássico ao acabamento perfeito.
+        </p>
+
+        <div class="services-grid reveal">
+          <!-- CARD 1 — CORTE -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-cut"></i></div>
+            <div class="service-name">Corte de Cabelo</div>
+            <div class="service-desc">
+              Corte masculino com lavagem, secagem e finalização profissional.
+            </div>
+            <div class="service-price"><sup>R$</sup>30</div>
+          </div>
+
+          <!-- CARD 2 — BARBA -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+            <div class="service-name">Barba</div>
+            <div class="service-desc">
+              Modelagem, aparo e hidratação com navalha. Acabamento impecável.
+            </div>
+            <div class="service-price"><sup>R$</sup>20</div>
+          </div>
+
+          <!-- CARD 3 — COMBO (DESTAQUE) -->
+          <div class="service-card featured">
+            <span class="badge-popular">Popular</span>
+            <div class="service-icon"><i class="fas fa-star"></i></div>
+            <div class="service-name">Combo Completo</div>
+            <div class="service-desc">
+              Corte + Barba com todo o cuidado. A escolha certa para o homem que
+              valoriza a aparência.
+            </div>
+            <div class="service-price"><sup>R$</sup>45</div>
+          </div>
+
+          <!-- CARD 4 — SOBRANCELHA -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-eye"></i></div>
+            <div class="service-name">Sobrancelha</div>
+            <div class="service-desc">
+              Design e aparação de sobrancelha masculina com pinça e navalha.
+            </div>
+            <div class="service-price"><sup>R$</sup>20</div>
+          </div>
+
+          <!-- CARD 5 — HIDRATAÇÃO -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-spa"></i></div>
+            <div class="service-name">Hidratação Capilar</div>
+            <div class="service-desc">
+              Tratamento profundo para cabelos ressecados, com produtos
+              selecionados.
+            </div>
+            <div class="service-price"><sup>R$</sup>40</div>
+          </div>
+
+          <!-- CARD 6 — PIGMENTAÇÃO DE BARBA -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+            <div class="service-name">Pigmentação de Barba</div>
+            <div class="service-desc">
+              Coloração especial para barba, cobrindo falhas com naturalidade.
+            </div>
+            <div class="service-price"><sup>R$</sup>30</div>
+          </div>
+        </div>
+
+        <!-- WHATSAPP — altere o número abaixo -->
+        <div style="text-align: center; margin-top: 3rem">
+          <div class="booking-note reveal">
+            <i class="fas fa-info-circle"></i>
+            Agendamento pelo WhatsApp — sem fila, no seu horário preferido.
+          </div>
+          <br />
+          <a
+            href="https://api.whatsapp.com/send?phone=5571987501294&text=Olá%2C%20quero%20agendar%20um%20serviço!"
+            target="_blank"
+            rel="noopener"
+            class="btn-wpp reveal"
+            style="margin-top: 1rem"
+          >
+            <i class="fab fa-whatsapp"></i> Agendar agora
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    SOBRE
+  ============================================================ -->
+    <section id="sobre">
+      <div class="container">
+        <div class="sobre-inner">
+          <div class="sobre-visual">
+            <div class="mirror-frame">
+              <div class="mirror-inner">
+                <i class="fas fa-scissors"></i>
+                <p>"Cada corte conta<br />uma história."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sobre-content reveal">
+            <span class="eyebrow">Quem sou</span>
+            <span class="gold-line gold-line--left"></span>
+            <h2 class="section-title" style="text-align: left">
+              Ed Mãos de Tesoura —
+              <em style="font-style: italic; color: var(--caramel)"
+                >o Edgar por trás da lenda</em
+              >
+            </h2>
+
+            <p class="sobre-text">
+              Assim como o personagem de Tim Burton que moldava jardins com suas
+              mãos-tesoura, <span>Edgar</span> molda identidades com maestria e
+              precisão. Mais de duas década transformando a aparência — e a
+              autoestima — dos seus clientes.
+            </p>
+            <p class="sobre-text">
+              Cada visita é uma experiência completa: um ambiente acolhedor,
+              atendimento personalizado e a certeza de que você vai sair
+              diferente — do jeito certo.
+            </p>
+
+            <div class="diferenciais">
+              <div class="diferencial-item">
+                <i class="fas fa-check-circle"></i> Atendimento 100%
+                personalizado e sem pressa
+              </div>
+              <div class="diferencial-item">
+                <i class="fas fa-check-circle"></i> Produtos premium nacionais e
+                importados
+              </div>
+              <div class="diferencial-item">
+                <i class="fas fa-check-circle"></i> Ambiente limpo, climatizado
+                e descontraído
+              </div>
+              <div class="diferencial-item">
+                <i class="fas fa-check-circle"></i> Pontualidade e respeito pelo
+                seu tempo
+              </div>
+              <div class="diferencial-item">
+                <i class="fas fa-check-circle"></i> Técnicas clássicas e
+                tendências atuais
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    LOCALIZAÇÃO & HORÁRIOS
+  ============================================================ -->
+    <section id="localizacao">
+      <div class="container">
+        <span class="eyebrow">Onde estamos</span>
+        <div class="section-divider">
+          <span></span><i class="fas fa-map-marker-alt"></i><span></span>
+        </div>
+        <h2 class="section-title">Localização & Horários</h2>
+        <p class="section-subtitle">
+          Venha nos visitar ou agende pelo WhatsApp antes de vir.
+        </p>
+
+        <div class="localizacao-grid reveal">
+          <!-- CARD ENDEREÇO -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <i class="fas fa-map-marker-alt"></i> Endereço
+            </div>
+            <div class="endereco-info">
+              <!-- Endereço -->
+              <div class="endereco-row">
+                <i class="fas fa-map-pin"></i> Av. Jorge Amado, 2207 —
+                Boca do Rio, Salvador — BA, CEP 41720-040
+              </div>
+              <div class="endereco-row">
+                <i class="fas fa-phone"></i> (71) 98750-1294
+              </div>
+              <div class="endereco-row">
+                <i class="fab fa-whatsapp"></i> (71) 98750-1294
+              </div>
+              <div class="endereco-row">
+                <i class="fas fa-envelope"></i> edmaosde­tesoura@protonmail.com
+              </div>
+              <div style="margin-top: 1rem">
+                <!-- WHATSAPP -->
+                <a
+                  href="https://api.whatsapp.com/send?phone=5571987501294"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-wpp"
+                  style="padding: 0.6rem 1.25rem; font-size: 0.82rem"
+                >
+                  <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD HORÁRIOS -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <i class="fas fa-clock"></i> Horários de Funcionamento
+            </div>
+            <!-- Horários abaixo -->
+            <ul class="horarios-list">
+              <li>
+                <span class="dia">Segunda-feira</span
+                ><span class="hora">09h – 19h</span>
+              </li>
+              <li>
+                <span class="dia">Terça-feira</span
+                ><span class="hora">09h – 19h</span>
+              </li>
+              <li>
+                <span class="dia">Quarta-feira</span
+                ><span class="hora">09h – 19h</span>
+              </li>
+              <li>
+                <span class="dia">Quinta-feira</span
+                ><span class="hora">09h – 19h</span>
+              </li>
+              <li>
+                <span class="dia">Sexta-feira</span
+                ><span class="hora">09h – 20h</span>
+              </li>
+              <li>
+                <span class="dia">Sábado</span
+                ><span class="hora">08h – 18h</span>
+              </li>
+              <li>
+                <span class="dia">Domingo</span
+                ><span class="fechado"
+                  >Os dois primeiros domingos do mês até as 13h</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- MAPA -->
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0041474210175!2d-38.4232179257999!3d-12.971586187343757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7161a37b83a8b45%3A0xe645fe0fe892e734!2sAv.%20Jorge%20Amado%2C%202207%20-%20Boca%20do%20Rio%2C%20Salvador%20-%20BA%2C%2041720-040!5e0!3m2!1spt-BR!2sbr!4v1784557214470!5m2!1spt-BR!2sbr"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+  ============================================================ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo-text">Ed Mãos de Tesoura</div>
+          <div class="logo-sub">Barbearia & Estilo</div>
+          <p style="margin-top: 0.75rem">Salvador, Bahia — Brasil</p>
+        </div>
+
+        <div class="footer-center">
+          <i class="fas fa-scissors scissors-icon"></i>
+        </div>
+
+        <div class="footer-social">
+          <!-- Links das redes sociais -->
+          <a
+            href="https://instagram.com/SEU_PERFIL"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://facebook.com/SEU_PERFIL"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <!-- WHATSAPP — altere o número abaixo -->
+          <a
+            href="https://api.whatsapp.com/send?phone=5571987501294"
+            target="_blank"
+            rel="noopener"
+            aria-label="WhatsApp"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a
+            href="https://tiktok.com/@SEU_PERFIL"
+            target="_blank"
+            rel="noopener"
+            aria-label="TikTok"
+          >
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        © 2025 Ed Mãos de Tesoura — Todos os direitos reservados.
+        <!-- Link do desenvolvedor -->
+        Desenvolvido por
+        <a href="https://github.com/gabrielmessias-dev" target="_blank" rel="noopener"
+          >Gabriel Messias</a
+        >
+      </div>
+    </footer>
+
+    <!-- ============================================================
+    BOTÃO FLUTUANTE WHATSAPP
+  ============================================================ -->
+    <a
+      href="https://api.whatsapp.com/send?phone=5571987501294&text=Olá%2C%20gostaria%20de%20agendar%20um%20horário!"
+      target="_blank"
+      rel="noopener"
+      class="wpp-float"
+      aria-label="Falar pelo WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="script.js"></script>
+  </body>
+</html>

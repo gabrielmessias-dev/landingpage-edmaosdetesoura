@@ -1,0 +1,814 @@
+    /* ==============================================================
+      VARIÁVEIS DE CONFIGURAÇÃO
+    ============================================================== */
+    :root {
+      /* WHATSAPP (formato: código do país + DDD + número) */
+      --whatsapp-number: "5571987501294";
+
+      /* CORES */
+      --bg-deep:    #1C1210;
+      --bg-card:    #2A1B18;
+      --bg-mid:     #231512;
+      --gold:       #C59B27;
+      --gold-light: #DDB84A;
+      --caramel:    #A07855;
+      --text-white: #FFFFFF;
+      --text-beige: #F5F0EB;
+      --text-muted: #9E8E85;
+
+      /* TIPOGRAFIA */
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Poppins', sans-serif;
+    }
+
+    /* ==============================================================
+      RESET & BASE
+    ============================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-deep);
+      color: var(--text-beige);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* Linha decorativa dourada */
+    .gold-line {
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 1.5rem;
+    }
+    .gold-line--left { margin-left: 0; }
+
+    /* Eyebrow / label de seção */
+    .eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Títulos de seção */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    section { padding: 5rem 1.5rem; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Botão padrão WhatsApp */
+    .btn-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: var(--gold);
+      color: var(--bg-deep);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border-radius: 4px;
+      transition: background 0.25s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-wpp:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ==============================================================
+      HEADER / NAVBAR
+    ============================================================== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s, box-shadow 0.35s;
+    }
+    #navbar.scrolled {
+      background: rgba(28, 18, 16, 0.96);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .nav-logo .scissors-icon {
+      font-size: 1.4rem;
+      color: var(--gold);
+      transform: rotate(-45deg);
+      display: inline-block;
+    }
+    .nav-logo .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.1;
+    }
+    .nav-logo .logo-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-beige);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-beige);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(28, 18, 16, 0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--text-white);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .nav-links, #navbar .btn-wpp { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ==============================================================
+      HERO SECTION
+    ============================================================== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 1.5rem;
+      /* Fundo com gradiente que simula ambiente de barbearia premium */
+      background:
+        linear-gradient(135deg, rgba(28,18,16,0.97) 40%, rgba(42,27,24,0.85) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 0h60v60H0z' fill='%231C1210'/%3E%3Cpath d='M30 0v60M0 30h60' stroke='%232A1B18' stroke-width='1'/%3E%3C/svg%3E");
+    }
+
+    /* Ornamento SVG decorativo no canto */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,155,39,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,155,39,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding-top: 5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(197,155,39,0.12);
+      border: 1px solid rgba(197,155,39,0.3);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--text-white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .btn-outline {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-beige);
+      border-bottom: 1px solid rgba(245,240,235,0.3);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Visual lado direito do hero: tesoura animada */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .scissors-art {
+      position: relative;
+      width: 280px;
+      height: 280px;
+    }
+    .scissors-art .ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(197,155,39,0.15);
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+    .scissors-art .ring:nth-child(2) {
+      inset: 20px;
+      border-color: rgba(197,155,39,0.25);
+      animation-delay: 0.5s;
+    }
+    .scissors-art .ring:nth-child(3) {
+      inset: 40px;
+      border-color: rgba(197,155,39,0.1);
+      animation-delay: 1s;
+    }
+    .scissors-art .main-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+      color: var(--gold);
+      opacity: 0.9;
+      animation: snip 4s ease-in-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50%       { transform: scale(1.05); opacity: 1; }
+    }
+    @keyframes snip {
+      0%, 90%, 100% { transform: rotate(-30deg); }
+      45%            { transform: rotate(-5deg); }
+    }
+
+    /* Stats rápidos */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(197,155,39,0.15);
+    }
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat span {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; padding-top: 6rem; }
+      .hero-subtitle { margin: 0 auto 2rem; }
+      .hero-cta-group { justify-content: center; }
+      .hero-visual { order: -1; }
+      .scissors-art { width: 180px; height: 180px; }
+      .scissors-art .main-icon { font-size: 4.5rem; }
+      .hero-stats { justify-content: center; }
+    }
+
+    /* ==============================================================
+      SERVIÇOS & PREÇOS
+    ============================================================== */
+    #servicos {
+      background: var(--bg-mid);
+    }
+    #servicos .container { text-align: center; }
+    #servicos .section-subtitle { margin: 0 auto 3.5rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(197,155,39,0.1);
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.25s;
+    }
+    .service-card:hover {
+      border-color: rgba(197,155,39,0.45);
+      transform: translateY(-4px);
+    }
+    /* Traço dourado no hover */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card.featured {
+      border-color: rgba(197,155,39,0.4);
+      background: linear-gradient(135deg, var(--bg-card), #301F1B);
+    }
+    .service-card.featured::before { opacity: 1; }
+
+    .badge-popular {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--gold);
+      color: var(--bg-deep);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+    }
+
+    .service-icon {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--text-white);
+      margin-bottom: 0.4rem;
+    }
+    .service-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .service-price {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .service-price sup {
+      font-size: 0.85rem;
+      vertical-align: super;
+      font-weight: 400;
+      color: var(--caramel);
+    }
+
+    /* Aviso de agendamento */
+    .booking-note {
+      margin-top: 3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(197,155,39,0.08);
+      border: 1px solid rgba(197,155,39,0.2);
+      padding: 1rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: var(--text-beige);
+    }
+    .booking-note i { color: var(--gold); }
+
+    /* ==============================================================
+      SOBRE
+    ============================================================== */
+    #sobre {
+      background: var(--bg-deep);
+    }
+    .sobre-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    /* Arte lateral — "espelho de barbearia" estilizado */
+    .sobre-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mirror-frame {
+      width: 260px;
+      height: 340px;
+      border: 2px solid rgba(197,155,39,0.3);
+      border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(160deg, var(--bg-card), #160e0c);
+      box-shadow: 0 0 60px rgba(197,155,39,0.06), inset 0 0 40px rgba(0,0,0,0.5);
+    }
+    .mirror-frame::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+      border: 1px solid rgba(197,155,39,0.12);
+    }
+    .mirror-inner {
+      text-align: center;
+      color: var(--gold);
+    }
+    .mirror-inner i { font-size: 4.5rem; opacity: 0.7; }
+    .mirror-inner p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--caramel);
+      margin-top: 0.75rem;
+      line-height: 1.4;
+    }
+
+    /* Decoração */
+    .sobre-visual::before {
+      content: '';
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,155,39,0.07), transparent 70%);
+    }
+
+    .sobre-content .section-title { text-align: left; }
+    .sobre-content .gold-line { margin-left: 0; }
+
+    .sobre-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .sobre-text span { color: var(--caramel); font-weight: 500; }
+
+    .diferenciais {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .diferencial-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.88rem;
+      color: var(--text-beige);
+    }
+    .diferencial-item i {
+      color: var(--gold);
+      width: 18px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .sobre-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-visual { order: -1; }
+      .mirror-frame { width: 200px; height: 260px; }
+    }
+
+    /* ==============================================================
+      LOCALIZAÇÃO & HORÁRIOS
+    ============================================================== */
+    #localizacao {
+      background: var(--bg-mid);
+    }
+    #localizacao .container { text-align: center; }
+    #localizacao .section-subtitle { margin: 0 auto 3rem; }
+
+    .localizacao-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(197,155,39,0.1);
+      border-radius: 6px;
+      padding: 2rem;
+    }
+    .info-card-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-white);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .info-card-title i { color: var(--gold); }
+
+    .horarios-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .horarios-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(197,155,39,0.08);
+    }
+    .horarios-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .horarios-list .dia { color: var(--text-muted); }
+    .horarios-list .hora { color: var(--text-beige); font-weight: 500; }
+    .horarios-list .fechado { color: var(--caramel); font-style: italic; }
+
+    .endereco-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .endereco-row {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      font-size: 0.88rem;
+      color: var(--text-beige);
+    }
+    .endereco-row i { color: var(--gold); margin-top: 0.15rem; width: 16px; flex-shrink: 0; }
+
+    .map-wrapper {
+      grid-column: 1 / -1;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(197,155,39,0.1);
+      margin-top: 0.5rem;
+    }
+    /* ⚠️ SUBSTITUA o src do iframe pelo link de incorporação do Google Maps do seu endereço */
+    .map-wrapper iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg) saturate(0.6);
+    }
+
+    @media (max-width: 700px) {
+      .localizacao-grid { grid-template-columns: 1fr; }
+      .map-wrapper { grid-column: 1; }
+    }
+
+    /* ==============================================================
+      FOOTER
+    ============================================================== */
+    #footer {
+      background: #130C0B;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(197,155,39,0.12);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-brand .logo-text { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-white); }
+    .footer-brand .logo-sub  { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .footer-brand p { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+    .footer-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .footer-center .scissors-icon { font-size: 1.5rem; color: var(--gold); transform: rotate(-45deg); display: block; }
+
+    .footer-social {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    .footer-social a {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(197,155,39,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .footer-social a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(197,155,39,0.08);
+    }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(197,155,39,0.07);
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-copy a { color: var(--caramel); }
+    .footer-copy a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-social { justify-content: center; }
+    }
+
+    /* ==============================================================
+      BOTÃO FLUTUANTE DO WHATSAPP
+    ============================================================== */
+    .wpp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      z-index: 900;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: wpp-bounce 2.5s ease-in-out infinite;
+    }
+    .wpp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+      animation: none;
+    }
+    @keyframes wpp-bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+
+    /* ==============================================================
+      SCROLL REVEAL (animação suave de entrada)
+    ============================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ==============================================================
+      DIVIDER DECORATIVO
+    ============================================================== */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .section-divider span {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(197,155,39,0.3));
+    }
+    .section-divider span:last-child {
+      background: linear-gradient(to left, transparent, rgba(197,155,39,0.3));
+    }
+    .section-divider i { color: var(--gold); font-size: 0.8rem; }
